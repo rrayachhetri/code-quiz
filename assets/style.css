@@ -1,0 +1,36 @@
+:root {
+    font-family:sans-serif;
+    background-image:url(./images/quiz.jpg);
+}
+
+#scores {
+    color: white;
+    background-color: #6c757d;
+    font: 17px;
+    margin:4px 0px 0px;
+    padding: 6px 12px;
+}
+.countDown {
+ display:flex;
+ justify-content: flex-end;
+ font: 16px;
+ margin:-25px 15px;
+
+}
+
+.welCome {
+    display:flex;
+    justify-content:center;
+    text-align: center;
+    margin: 350px;
+    padding: 35px;
+    font-size: 35px;
+}
+
+.text  {
+     display:flex;
+    justify-content:center;
+    text-align: center;
+    margin:-350px;
+    font-size: 20px;
+}
