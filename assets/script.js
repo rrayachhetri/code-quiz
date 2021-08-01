@@ -1,24 +1,19 @@
 var introEl = document.querySelector("#intro");
-var startQuizBtn = document.querySelector("#start");
+
 var que_listsEl = document.querySelector("#que_lists");
-
-var viewhighScoreEl = document.querySelector("#scores");
 var qCount = 0;
-
 var timerEl = document.querySelector("timer");
 var timeLeft = 75;
-function stopWatch() {
-    var timeInterval = setInterval(function () {
-        timeLeft--;
-        timerEl.textContent = "Time:${timeLeft}s";
+var viewhighScoreEl = document.querySelector("#scores");
 
-        if (timeLeft === 0 || qCount === que_lists.length) {
-            clearInterval(timeInterval);
-            viewhighScoreEl.textContent = timeLeft;
-        }
+// buttons
+var startQuizBtn = document.querySelector("#start");
+var ans1Btn = document.querySelector("#ans1");
+var ans2Btn = document.querySelector("#ans2");
+var ans3Btn = document.querySelector("#ans3");
+var ans4Btn = document.querySelector("#ans4");
 
-    }, 1000);
-}
+
 
   var questions = [ // array of objects
     {
@@ -53,6 +48,19 @@ function stopWatch() {
     }
 ];
 
+function stopWatch() {
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = "Time:${timeLeft}s";
+
+        if (timeLeft === 0 || qCount === que_lists.length) {
+            clearInterval(timeInterval);
+            viewhighScoreEl.textContent = timeLeft;
+        }
+
+    }, 1000);
+}
+
 //sections
 
 
@@ -68,8 +76,8 @@ function startQuiz() {
 startQuizBtn.addEventListener("click", que_lists);
 
 function setQuestion(id) {
-    if (id < questions.length) {
-        questionEl.textContent = que_lists[id].questions;
+    if (id < que_lists.length) {
+       
         ans1Btn.textContent = que_lists[id].answers[0];
         ans2Btn.textContent = que_lists[id].answers[1];
         ans3Btn.textContent = que_lists[id].answers[2];
