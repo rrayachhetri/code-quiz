@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header class="container">
+    <header class="container1">
         <div class="content">
             <div class="highScore">
                 <button id="scores" type="button" class="Btn">View High Scores!</button>
@@ -24,22 +24,82 @@
 
     <main>
         <div class="container">
-            <section id="firstPage">
+            <section id="intro">
                 <div class="content">
-                    <div class="intro">
+                    <div class="firstpage">
                         <h1 class="welCome">Welcome to the JavaScript Fundamentals<br></br> Coding Quiz Challenge!</h1>
-                        <p class="text">Try to answer the following code-related questions within the time <br></br>limit.Keep in mind that incorrect answers will penalize your score/time<br></br>by ten seconds!</p>
+                        <p class="text">Try to answer the following code-related questions within the time
+                            <br></br>limit.Keep in mind that incorrect answers will penalize your score/time<br></br>by
+                            ten seconds!
+                        </p>
+                        <button id="start" type="button" class="startBtn">Start Quiz</button>
                     </div>
+                </div>
+
+
+            </section>
+
+            <!-- Section for Question and Answers // Show upon Start-->
+            <section id="que_lists">
+                <div class="content">
+                    <div class="lists">
+                        <ul class="options">
+                            <li class="choose"><button id="ans1" value="0" type="button" class="ansBtn">Answer1</button>
+                            </li>
+                            <li class="choose"><button id="ans2" value="1" type="button" class="ansBtn">Answer2</button>
+                            </li>
+                            <li class="choose"><button id="ans3" value="2" type="button" class="ansBtn">Answer3</button>
+                            </li>
+                            <li class="choose"><button id="ans4" value="3" type="button" class="ansBtn">Answer4</button>
+                            </li>
+                        </ul>
+                        <div id="output" class="result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section for Final Score and Name -->
+            <section id="end">
+                <div class="content">
+                    <div class="final">
+                        <h2>All done!</h2>
+                        <p>Your final score is: <span id="Fscore" class="scoreResult">0</span></p>
+                        <P>Enter Initials: <span class="input"><input placeholder="initials" id="initials" /></span>
+                            <button id="submit" class="submitBtn">Submit</button>
+                        </P>
+                    </div>
+                </div>
+            </section>
+
+            <!-- High Score Section -->
+            <section id="highscores">
+                <div class="content">
+                    <div class="final">
+                        <h2>High Scores</h2>
+                        <ol id="score-list"></ol>
+                        <button id="restart" class="restartBtn">Restart</button>
+                        <button id="clearScores" class="clearBtn">Clear Scores</button>
+                    </div>
+                </div>
             </section>
         </div>
 
     </main>
 
+   <!-- Footer -->
+   <div class="footer">
+       <footer class="copyright">
+           <div class="end">
+               <h2> Design by Rabin Raya Chhetri</h2><br/>
+               &copy; 2021 Code Quiz, Inc.
+           </div>
+
+       </footer>
+   </div>
 
 
 
-
-<script src="./assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 
 
 

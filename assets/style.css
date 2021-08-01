@@ -1,20 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 :root {
     font-family:sans-serif;
-    background-image:url(./images/quiz.jpg);
+    
 }
+body {
+  background-image:url(./images/quiz.jpg); 
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 
+}
 #scores {
     color: white;
     background-color: #6c757d;
     font: 17px;
     margin:4px 0px 0px;
     padding: 6px 12px;
+    border: white;
 }
 .countDown {
  display:flex;
  justify-content: flex-end;
  font: 16px;
- margin:-25px 15px;
+ margin:-23px 15px;
 
 }
 
@@ -28,9 +36,22 @@
 }
 
 .text  {
-     display:flex;
+    display:flex;
     justify-content:center;
     text-align: center;
     margin:-350px;
     font-size: 20px;
+}
+
+#start {
+    color:white;
+    background-color:green;
+    margin:370px;
+    padding: 6px 12px;
+    border: white;
+    line-height: 20px;
+    font-size: 20px;
+}
+.firstpage {
+    text-align: center;
 }
