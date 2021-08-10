@@ -1,21 +1,25 @@
 var introEl = document.querySelector("#intro");
 
-var que_listsEl = document.querySelector("#que_lists");
-var qCount = 0;
-var timerEl = document.querySelector("timer");
-var timeLeft = 75;
-var viewhighScoreEl = document.querySelector("#scores");
+var optionEl = document.querySelector("options");
 
+var timerEl = document.querySelector("#countDown");
+
+var endEl = document.getElementById("end");
+
+var viewhighScoreBtn = document.getElementById("scores");
+var qCountEl = document.querySelector("#qCount")
 // buttons
-var startQuizBtn = document.querySelector("#start");
-var ans1Btn = document.querySelector("#ans1");
-var ans2Btn = document.querySelector("#ans2");
-var ans3Btn = document.querySelector("#ans3");
-var ans4Btn = document.querySelector("#ans4");
+var questionEl = document.getElementById("question");
+var startQuizBtn = document.getElementById("start");
+
+var ans1Btn = document.getElementById("ans1");
+var ans2Btn = document.getElementById("ans2");
+var ans3Btn = document.getElementById("ans3");
+var ans4Btn = document.getElementById("ans4");
 
 
-
-  var questions = [ // array of objects
+var qCount = 0;
+  var questions = [ // array of obgetElementByIdjects
     {
         // question 0
         question: "Commonly used data types do NOT include:",
@@ -49,13 +53,15 @@ var ans4Btn = document.querySelector("#ans4");
 ];
 
 function stopWatch() {
+    var timeLeft = 5;
     var timeInterval = setInterval(function () {
         timeLeft--;
-        timerEl.textContent = "Time:${timeLeft}s";
+        timerEl.textContent = `Time:${timeLeft}s`;
 
-        if (timeLeft === 0 || qCount === que_lists.length) {
+        if (timeLeft === 0 || qCount === questions.length) {
             clearInterval(timeInterval);
-            viewhighScoreEl.textContent = timeLeft;
+            endEl.classList.remove('hide');
+            // viewhighScoreBtn.textContent = ;
         }
 
     }, 1000);
@@ -66,23 +72,34 @@ function stopWatch() {
 
 // section questions
 function startQuiz() {
-    introEl.style.display = "none";
-    que_listsEl.style.display = "block";
+   introEl.classList.add('hide');
     qCount = 0;
 
     stopWatch();
     setQuestion(qCount);
 } 
-startQuizBtn.addEventListener("click", que_lists);
+startQuizBtn.onclick = startQuiz;
 
-function setQuestion(id) {
-    if (id < que_lists.length) {
+
+function setQuestion(qCount) {
+    console.log("set question fn activated");
+    questionEl.textContent = questions[qCount].question 
+     
        
-        ans1Btn.textContent = que_lists[id].answers[0];
-        ans2Btn.textContent = que_lists[id].answers[1];
-        ans3Btn.textContent = que_lists[id].answers[2];
-        ans4Btn.textContent = que_lists[id].answers[3];
-    }
-}
+        ans1Btn.textContent = questions[qCount].answers[0];
+        ans2Btn.textContent = questions[qCount].answers[1];
+        ans3Btn.textContent = questions[qCount].answers[2];
+        ans4Btn.textContent = questions[qCount].answers[3];
+    
+    
+    
+    
+    
+        //add Eventlistener to answer buttons
+    //compare selected answer with correct answer
+    //render correct or incorrect to webpage!
+    //increment qCount by 1
+    // then re-run setquestion fn
+};
 
-
+questions[qCount].answers[0];

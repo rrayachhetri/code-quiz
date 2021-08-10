@@ -17,7 +17,7 @@
             </div>
 
             <div class="timer">
-                <p class="countDown">Time:75s</p>
+                <p id="countDown">Time:75s</p>
             </div>
         </div>
     </header>
@@ -42,6 +42,9 @@
             <!-- Section for Question and Answers // Show upon Start-->
             <section id="que_lists">
                 <div class="content">
+                    <div id="question">
+
+                    </div>
                     <div class="lists">
                         <ul class="options">
                             <li class="choose"><button id="ans1" value="0" type="button" class="ansBtn">Answer1</button>
@@ -59,10 +62,10 @@
             </section>
 
             <!-- Section for Final Score and Name -->
-            <section id="end">
+            <section id="end" class="hide">
                 <div class="content">
                     <div class="final">
-                        <h2>All done!</h2>
+                        <h2 >All done!</h2>
                         <p>Your final score is: <span id="Fscore" class="scoreResult">0</span></p>
                         <P>Enter Initials: <span class="input"><input placeholder="initials" id="initials" /></span>
                             <button id="submit" class="submitBtn">Submit</button>
