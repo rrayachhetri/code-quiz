@@ -12,10 +12,12 @@ var qCountEl = document.querySelector("#qCount")
 var questionEl = document.getElementById("question");
 var startQuizBtn = document.getElementById("start");
 
-var ans1Btn = document.getElementById("ans1");
-var ans2Btn = document.getElementById("ans2");
-var ans3Btn = document.getElementById("ans3");
-var ans4Btn = document.getElementById("ans4");
+var listEl = document.getElementById('Btnlist');
+
+
+// var ans2Btn = document.getElementById("ans2");
+// var ans3Btn = document.getElementById("ans3");
+// var ans4Btn = document.getElementById("ans4");
 
 
 var qCount = 0;
@@ -79,23 +81,36 @@ function startQuiz() {
     setQuestion(qCount);
 } 
 startQuizBtn.onclick = startQuiz;
+console.log(questions);
 
 
 function setQuestion(qCount) {
     console.log("set question fn activated");
     questionEl.textContent = questions[qCount].question 
+     console.log(ans1Btn);
+    for (let i = 0; i < questions[qCount].answers.length; i++) {
+
+        var Btn = document.createElement('li');
+        var answerBtns = document.createElement('button');
+        Btn.appendChild(answerBtns);
+        listEl.appendChild(Btn);
+        answerBtns.textContent = questions[qCount].answers[i];
+    }
      
-       
-        ans1Btn.textContent = questions[qCount].answers[0];
-        ans2Btn.textContent = questions[qCount].answers[1];
-        ans3Btn.textContent = questions[qCount].answers[2];
-        ans4Btn.textContent = questions[qCount].answers[3];
     
     
-    
-    
+    // 
     
         //add Eventlistener to answer buttons
+        ans1Btn.onclick = function () {
+            if (answers === correctAnswer) {
+                
+            }
+        
+        } 
+        console.log("qtn shuffled");
+    
+    
     //compare selected answer with correct answer
     //render correct or incorrect to webpage!
     //increment qCount by 1
