@@ -13,12 +13,9 @@ var questionEl = document.getElementById("question");
 var startQuizBtn = document.getElementById("start");
 
 var listEl = document.getElementById('Btnlist');
-
+var Btn_container = document.querySelector('.lists');
 var resetEl = document.getElementById('reset');
-// var ans2Btn = document.getElementById("ans2");
-// var ans3Btn = document.getElementById("ans3");
-// var ans4Btn = document.getElementById("ans4");
-
+var resultEl = document.querySelector('.result');
 
 var qCount = 0;
   var questions = [ // array of obgetElementByIdjects
@@ -98,40 +95,35 @@ function setQuestion(qCount) {
         answerBtns.setAttribute("data-response", questions[qCount].answers[i] );
     }
 };
+
+
 function buttonHandler (event) {
     event.preventDefault();
     var Btnresponse = event.target.getAttribute("data-response");
+    var response = Btnresponse.split('.')[0];
+    console.log(resultEl);
+    if (questions[qCount].correctAnswer === response) {
+        resultEl.textContent = "Correct!"
+    }
+
+    else {
+        resultEl.textContent = "Wrong!"
+    }
+
     reset();
     qCount ++;
     setQuestion(qCount);
-    console.log(Btnresponse);
-}
+};
+
+
+
 
 function reset (){
     while (listEl.firstChild) {
         listEl.removeChild(listEl.firstChild);
     }
-}
-listEl.addEventListener("click", buttonHandler);
-// resetEl.addEventListener("click", reset);  
+};
+Btn_container.addEventListener("click", buttonHandler);
 
 
-    // 
-    
-        //add Eventlistener to answer buttons
-        // ans1Btn.onclick = function () {
-        //     if (answers === correctAnswer) {
-                
-        //     }
-        
-        // } 
-        // console.log("qtn shuffled");
-    
-    
-    //compare selected answer with correct answer
-    //render correct or incorrect to webpage!
-    //increment qCount by 1
-    // then re-run setquestion fn
-
-
-questions[qCount].answers[0];
+function 
