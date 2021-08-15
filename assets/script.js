@@ -14,7 +14,7 @@ var startQuizBtn = document.getElementById("start");
 
 var listEl = document.getElementById('Btnlist');
 
-
+var resetEl = document.getElementById('reset');
 // var ans2Btn = document.getElementById("ans2");
 // var ans3Btn = document.getElementById("ans3");
 // var ans4Btn = document.getElementById("ans4");
@@ -55,7 +55,7 @@ var qCount = 0;
 ];
 
 function stopWatch() {
-    var timeLeft = 5;
+    var timeLeft = 75;
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = `Time:${timeLeft}s`;
@@ -81,13 +81,13 @@ function startQuiz() {
     setQuestion(qCount);
 } 
 startQuizBtn.onclick = startQuiz;
-console.log(questions);
+
 
 
 function setQuestion(qCount) {
-    console.log("set question fn activated");
+    
     questionEl.textContent = questions[qCount].question 
-     console.log(ans1Btn);
+   
     for (let i = 0; i < questions[qCount].answers.length; i++) {
 
         var Btn = document.createElement('li');
@@ -95,26 +95,40 @@ function setQuestion(qCount) {
         Btn.appendChild(answerBtns);
         listEl.appendChild(Btn);
         answerBtns.textContent = questions[qCount].answers[i];
+        answerBtns.setAttribute("data-response", questions[qCount].answers[i] );
     }
-     
-    
-    
+};
+function buttonHandler (event) {
+    event.preventDefault();
+    var Btnresponse = event.target.getAttribute("data-response");
+    console.log(Btnresponse);
+}
+
+function reset (){
+    while (listEl.firstChild) {
+        listEl.removeChild(listEl.firstChild);
+    }
+}
+listEl.addEventListener("click", buttonHandler);
+resetEl.addEventListener("click", reset);  
+
+
     // 
     
         //add Eventlistener to answer buttons
-        ans1Btn.onclick = function () {
-            if (answers === correctAnswer) {
+        // ans1Btn.onclick = function () {
+        //     if (answers === correctAnswer) {
                 
-            }
+        //     }
         
-        } 
-        console.log("qtn shuffled");
+        // } 
+        // console.log("qtn shuffled");
     
     
     //compare selected answer with correct answer
     //render correct or incorrect to webpage!
     //increment qCount by 1
     // then re-run setquestion fn
-};
+
 
 questions[qCount].answers[0];
