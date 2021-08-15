@@ -101,6 +101,9 @@ function setQuestion(qCount) {
 function buttonHandler (event) {
     event.preventDefault();
     var Btnresponse = event.target.getAttribute("data-response");
+    reset();
+    qCount ++;
+    setQuestion(qCount);
     console.log(Btnresponse);
 }
 
@@ -110,7 +113,7 @@ function reset (){
     }
 }
 listEl.addEventListener("click", buttonHandler);
-resetEl.addEventListener("click", reset);  
+// resetEl.addEventListener("click", reset);  
 
 
     // 
