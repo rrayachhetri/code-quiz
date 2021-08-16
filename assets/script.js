@@ -5,7 +5,7 @@ var optionEl = document.querySelector("options");
 var timerEl = document.querySelector("#countDown");
 
 var endEl = document.getElementById("end");
-
+var timeLeft = 75;
 var viewhighScoreBtn = document.getElementById("scores");
 var qCountEl = document.querySelector("#qCount")
 // buttons
@@ -52,13 +52,14 @@ var qCount = 0;
 ];
 
 function stopWatch() {
-    var timeLeft = 75;
+    
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = `Time:${timeLeft}s`;
 
         if (timeLeft === 0 || qCount === questions.length) {
             clearInterval(timeInterval);
+
             endEl.classList.remove('hide');
             // viewhighScoreBtn.textContent = ;
         }
@@ -76,7 +77,8 @@ function startQuiz() {
 
     stopWatch();
     setQuestion(qCount);
-} 
+   
+}
 startQuizBtn.onclick = startQuiz;
 
 
@@ -93,7 +95,9 @@ function setQuestion(qCount) {
         listEl.appendChild(Btn);
         answerBtns.textContent = questions[qCount].answers[i];
         answerBtns.setAttribute("data-response", questions[qCount].answers[i] );
+        
     }
+    
 };
 
 
@@ -106,13 +110,15 @@ function buttonHandler (event) {
         resultEl.textContent = "Correct!"
     }
 
-    else {
+    else if (questions[qCount].correctAnswer !== response){
+        timeLeft = timeLeft - 10;
         resultEl.textContent = "Wrong!"
     }
 
     reset();
     qCount ++;
     setQuestion(qCount);
+    Qtn_end();
 };
 
 
@@ -123,7 +129,23 @@ function reset (){
         listEl.removeChild(listEl.firstChild);
     }
 };
+
+
+
+function Qtn_end (qCount) {
+    if (qCount <= questions[qCount].answers.length) {
+        questionEl.removeChild(questionEl.firstChild);
+        endEl.classList.remove('hide');
+    }
+
+}
+    
+//   while (questionEl !== questions.length) {
+    //   questionEl.removeChild(questionEl.firstChild);
+    // optionEl.classList.add('hide');
+    // console.log(questionEl);
+    // console.log(question.length);
+      
+
+
 Btn_container.addEventListener("click", buttonHandler);
-
-
-function 
