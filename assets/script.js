@@ -8,17 +8,30 @@ var endEl = document.getElementById("end");
 var timeLeft = 75;
 var viewhighScoreBtn = document.getElementById("scores");
 var qCountEl = document.querySelector("#qCount")
+var finalEl = document.querySelector(".final");
+
+
 // buttons
 var questionEl = document.getElementById("question");
 var startQuizBtn = document.getElementById("start");
-
+var submitBtn = document.getElementById("submit");
 var listEl = document.getElementById('Btnlist');
 var Btn_container = document.querySelector('.lists');
 var resetEl = document.getElementById('reset');
 var resultEl = document.querySelector('.result');
 
+//localStorage
+
+// highscores
+var highscoreEl = document.querySelector("#highscores");
+var scoreListEl = document.querySelector("#score-list");
+var scores = [];
+
+
+
+// var resultEl = document.querySelector('.');
 var qCount = 0;
-  var questions = [ // array of obgetElementByIdjects
+var questions = [ // array of obgetElementByIdjects
     {
         // question 0
         question: "Commonly used data types do NOT include:",
@@ -104,8 +117,9 @@ function setQuestion(qCount) {
 function buttonHandler (event) {
     event.preventDefault();
     var Btnresponse = event.target.getAttribute("data-response");
+  
     var response = Btnresponse.split('.')[0];
-    console.log(resultEl);
+    // console.log(resultEl);
     if (questions[qCount].correctAnswer === response) {
         resultEl.textContent = "Correct!"
     }
@@ -118,7 +132,7 @@ function buttonHandler (event) {
     reset();
     qCount ++;
     setQuestion(qCount);
-    Qtn_end();
+   
 };
 
 
@@ -130,22 +144,44 @@ function reset (){
     }
 };
 
+  //Local Storage 
+  function setScore (event) {
+      event.preventDefault();
+      console.log(scores);
+    scores = scores.sort((a, b) => {
+        if (a.points < b.points) {
+            return 1;
+        
+        } else {
+            return -1;
+        }
 
-
-function Qtn_end (qCount) {
-    if (qCount <= questions[qCount].answers.length) {
-        questionEl.removeChild(questionEl.firstChild);
-        endEl.classList.remove('hide');
+    });
+     
+    scoreListEl.innerHTML = "";
+    for (var i = 0; i < scores.length; i++) {
+        var list = document.createElement("li");
+        list.textContent = `${scores[i].intials}; ${scores[i].points}`;
+        scoreListEl.append(li);
     }
+    addScores();
+    getScores();
+  }
 
-}
+  function addScores() {
+      localStorage.setItem("scores", JSON.stringify(scores));
+  }
+
+  function getScores () {
+
+    var addScoresList = JSON.parse(localStorage.getItem("scores"));
     
-//   while (questionEl !== questions.length) {
-    //   questionEl.removeChild(questionEl.firstChild);
-    // optionEl.classList.add('hide');
-    // console.log(questionEl);
-    // console.log(question.length);
-      
+    if (addScoresList !== null) {
+        scores = addScoresList;
+    }
+  }
 
 
+
+// submitBtn.onclick = localStorage();
 Btn_container.addEventListener("click", buttonHandler);
