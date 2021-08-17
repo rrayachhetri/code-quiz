@@ -30,11 +30,10 @@ var clearScoreBtn = document.querySelector("#clearScores");
 
 
 
-//localStorage
 
 // highscores
 var highscoreEl = document.querySelector("#highscores");
-var scoreListEl = document.querySelector("#score-list");
+var pointListEl = document.querySelector("#pointList");
 var scores = [];
 
 
@@ -178,11 +177,11 @@ function setScore(event) {
 
     });
 
-    scoreListEl.innerHTML = "";
+    pointListEl.innerHTML = "";
     for (let i = 0; i < scores.length; i++) {
         var list = document.createElement("li");
         list.textContent = `${scores[i].initials}; ${scores[i].points}`;
-        scoreListEl.append(list);
+       pointListEl.append(list);
     }
     addScores();
     showScores();
@@ -203,7 +202,7 @@ function showScores() {
 
 function clearScores() {
     localStorage.clear();
-    scoreListEl.innerHTML = "";
+    pointListEl.innerHTML = "";
 }
 
 

@@ -10,22 +10,46 @@ body {
   background-attachment: fixed;
 
 }
+
 #scores {
     color: white;
-    background-color: #6c757d;
+    background-color:green;
     font: 17px;
-    margin:4px 0px 0px;
+    margin:20px;
     padding: 6px 12px;
     border: white;
 }
-.countDown {
+
+#countDown {
  display:flex;
  justify-content: flex-end;
  font: 16px;
- margin:-23px 15px;
-
+ margin:-28px 15px;
+font-style: italic;
 }
 
+#question, .options, .final{
+    position: relative;
+    top:200px;
+    left:600px;
+    font-size: 1.5rem;
+    font-weight:bold;
+    line-height: 2rem;
+}
+
+
+#initials {
+   height: 1.5rem; 
+   width: 3rem;
+} 
+
+
+.result {
+    position: relative;
+    top:300px;
+    left:600px;
+  
+}
 .welCome {
     display:flex;
     justify-content:center;
@@ -43,15 +67,27 @@ body {
     font-size: 20px;
 }
 
-#start {
+#start  {
+    position: relative;
+    top:15rem;
+    left:.3rem;
     color:white;
     background-color:green;
-    margin:250px;
     padding: 6px 12px;
     border: white;
     line-height: 20px;
     font-size: 20px;
 }
+#submit, #restart, #clearScores, button {
+    color:white;
+    background-color:green;
+    margin: 20px;
+    line-height: 1.5rem;
+    font-size: 20px;
+    border: white;
+}
+
+
 .firstpage {
     text-align: center;
   
@@ -67,3 +103,13 @@ ul.options{
     display: none;
 }
 
+.endText {
+    position: absolute;
+    top: 60rem;
+    left: 1.6rem;
+}
+.footer  {
+    
+    flex-shrink: 0;
+    font-size: .8rem;
+}
