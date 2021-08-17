@@ -3,7 +3,7 @@ var introEl = document.querySelector("#intro");
 var optionEl = document.querySelector("options");
 
 var timerEl = document.querySelector("#countDown");
-
+var final_scoreEl = document.querySelector('#Final_score');
 var endEl = document.getElementById("end");
 var timeLeft = 75;
 
@@ -74,17 +74,17 @@ var questions = [ // array of obgetElementByIdjects
 ];
 
 function stopWatch() {
-    
+
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = `Time:${timeLeft}s`;
 
         if (timeLeft === 0 || qCount === questions.length) {
             clearInterval(timeInterval);
-
             que_listsEl.style.display = "none";
             endEl.style.display = "block";
-            
+            final_scoreEl.textContent = timeLeft;
+
         }
 
     }, 1000);
@@ -97,21 +97,21 @@ function stopWatch() {
 function startQuiz() {
     introEl.style.display = "none";
     que_listsEl.style.display = "block";
-     
+
     qCount = 0;
 
     stopWatch();
     setQuestion(qCount);
-   
+
 }
 startQuizBtn.onclick = startQuiz;
 
 
 
 function setQuestion(qCount) {
-    
-    questionEl.textContent = questions[qCount].question;
-   
+
+    questionEl.textContent = questions[qCount].question
+
     for (let i = 0; i < questions[qCount].answers.length; i++) {
 
         var Btn = document.createElement('li');
@@ -119,31 +119,31 @@ function setQuestion(qCount) {
         Btn.appendChild(answerBtns);
         listEl.appendChild(Btn);
         answerBtns.textContent = questions[qCount].answers[i];
-        answerBtns.setAttribute("data-response", questions[qCount].answers[i] );
-        
+        answerBtns.setAttribute("data-response", questions[qCount].answers[i]);
+
     }
-    
+
 };
 
 
-function buttonHandler (event) {
+function buttonHandler(event) {
     event.preventDefault();
 
     var Btnresponse = event.target.getAttribute("data-response");
-    
+
     var response = Btnresponse.split('.')[0];
     // console.log(resultEl);
     if (questions[qCount].correctAnswer === response) {
         resultEl.textContent = "Correct!"
     }
 
-    else if (questions[qCount].correctAnswer !== response){
+    else if (questions[qCount].correctAnswer !== response) {
         timeLeft = timeLeft - 10;
         resultEl.textContent = "Wrong!"
     }
 
     reset();
-    qCount ++;
+    qCount++;
     setQuestion(qCount);
 
 };
@@ -151,7 +151,7 @@ function buttonHandler (event) {
 
 
 
-function reset (){
+function reset() {
     while (listEl.firstChild) {
         listEl.removeChild(listEl.firstChild);
     }
@@ -159,25 +159,25 @@ function reset (){
 
 
 
-  //Local Storage 
-  function setScore (event) {
+//Local Storage 
+function setScore(event) {
     event.preventDefault();
 
-      endEl.style.display = "none";
-      highscoreEl.style.display = "block";
+    endEl.style.display = "none";
+    highscoreEl.style.display = "block";
 
     var init = initialIn.value.toUpperCase();
-    scores.push({initials: init, points: timeLeft});
+    scores.push({ initials: init, points: timeLeft });
     scores = scores.sort((a, b) => {
         if (a.points < b.points) {
             return 1;
-        
+
         } else {
             return -1;
         }
 
     });
-     
+
     scoreListEl.innerHTML = "";
     for (let i = 0; i < scores.length; i++) {
         var list = document.createElement("li");
@@ -186,20 +186,20 @@ function reset (){
     }
     addScores();
     showScores();
-  }
+}
 
-  function addScores() {
-      localStorage.setItem("scores", JSON.stringify(scores));
-  }
+function addScores() {
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
 
-  function showScores () {
+function showScores() {
 
     var addScoresList = JSON.parse(localStorage.getItem("scores"));
-    
+
     if (addScoresList !== null) {
         scores = addScoresList;
     }
-  }
+}
 
 function clearScores() {
     localStorage.clear();
@@ -212,7 +212,7 @@ Btn_container.addEventListener("click", buttonHandler);
 restartBtn.addEventListener("click", function () {
     highscoreEl.style.display = "none";
     introEl.style.display = "block";
-   
+
     timeLeft = 75;
     timerEl.textContent = `Time:${timeLeft}s`;
 });
@@ -227,5 +227,5 @@ viewhighScoreBtn.addEventListener("click", function () {
     } else {
         return alert("No scores to show.");
     }
-    
+
 });
