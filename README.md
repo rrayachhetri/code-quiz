@@ -43,14 +43,15 @@ THEN I can save my initials and score
 ## Screenshots
 
 ### Start Quiz section
+<img alt="screenShot"  src="./assets/images/code-quiz 01.png">
 
 ### Question section
-<img alt=screenShot  href="">
+<img alt="screenShot"  src="./assets/images/code-quiz 02.png">
 
 ### Submit scores section
-
+<img alt="screenShot"  src="./assets/images/code-quiz 03.png">
 
 ### High scores section
-
+<img alt="screenShot"  src="./assets/images/code-quiz 04.png">
 
 
