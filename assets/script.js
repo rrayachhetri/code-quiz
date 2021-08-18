@@ -8,7 +8,7 @@ var endEl = document.getElementById("end");
 var timeLeft = 75;
 
 var qCountEl = document.querySelector("#qCount")
-// var finalEl = document.querySelector(".final");
+
 var questionEl = document.getElementById("question");
 var listEl = document.getElementById('Btnlist');
 var Btn_container = document.querySelector('.lists');
@@ -167,6 +167,7 @@ function setScore(event) {
 
     var init = initialIn.value.toUpperCase();
     scores.push({ initials: init, points: timeLeft });
+   
     scores = scores.sort((a, b) => {
         if (a.points < b.points) {
             return 1;
@@ -174,9 +175,9 @@ function setScore(event) {
         } else {
             return -1;
         }
-
+       
     });
-
+    console.log(scores);
     pointListEl.innerHTML = "";
     for (let i = 0; i < scores.length; i++) {
         var list = document.createElement("li");

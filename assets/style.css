@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
 :root {
     font-family:sans-serif;
     
@@ -114,3 +114,27 @@ ul.options{
     flex-shrink: 0;
     font-size: .8rem;
 }
+
+/* Mobile */
+@media (max-width: 480px) {
+    body {
+        background-color: lightblue;
+    }
+
+
+
+    
+}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px) {
+    body {
+        background-image: url(../assets/images/quiz.jpg);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    body {
+	    background-image: url(../assets/images/quiz.jpg);
+   }
